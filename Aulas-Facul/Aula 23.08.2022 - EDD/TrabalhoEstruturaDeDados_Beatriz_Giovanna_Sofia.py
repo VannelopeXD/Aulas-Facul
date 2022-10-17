@@ -85,17 +85,23 @@ class LinkedList:
         print("Você é trouxa")
 
     # Item inserido na primeira posição - ajustar
-    def insereNoComeco(self, elemento):
-        if self.InicioDaLista is None:
-            atual = self.InicioDaLista
-
-            novoNo = Node(elemento)
-            novoNo.next = atual
-            self.InicioDaLista = novoNo
-            
-        else:
-            novoNo = Node(elemento)
-            self.InicioDaLista = novoNo
+    def insereNoComeco(self, NovoNo):
+        novoNode = Node(novoNo)
+    if(self.inicio == None):
+      self.inicio = novoNode
+      novoNode.proximo = self.inicio
+      novoNode.anterior = self.inicio
+      return
+    
+    else:
+      atual = self.inicio
+      while(atual.proximo != self.inicio):
+        atual = atual.proximo
+      atual.proximo = novoNode
+      novoNode.anterior = atual
+      novoNode.proximo = self.inicio
+      self.inicio.anterior = novoNode
+      self.inicio = novoNode
 
     # Item inserido na posição determinada
     def insereNoPonto (self, index):
